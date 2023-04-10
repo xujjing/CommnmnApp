@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_module_name">app</string>
+    <string name="app_home">Home</string>
+    <string name="user_login">UserLogin</string>
+    <string name="user_account">UserAccount</string>
+    <string name="user_setting">UserSetting</string>
+    <string name="vod_search">VodSearch</string>
+    <string name="vod_channel">VodChannel</string>
+    <string name="vod_detail">VodDetail</string>
+    <string name="vod_series_movie">SeriesMovie</string>
+    <string name="vod_play">VodPlay</string>
+    <string name="vod_download">VodDownload</string>
+    <string name="vod_trailer_play">TrailerPlay</string>
+    <string name="vod_local_play">VodLocalPlay</string>
+</resources>

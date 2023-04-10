@@ -1,0 +1,18 @@
+<resources>
+    <string name = "app_name"> TinkerLib </string>
+    <string name = "tinker_title_apk_newest"> Already the latest version </string>
+    <string name = "tinker_title_apk_upgrade"> Found the latest version, need to upgrade </string>
+    <string name = "tinker_install_and_reopen"> Please install and reopen </string>
+    <string name = "tinker_patch_effect_next_time"> Installing patch and take effect next time </string>
+    <string name = "tinker_patch_wait_for_restart"> Installing patch, please wait for restart </string>
+    <string name = "tinker_install_to_upgrade"> Please install to upgrade the latest application </string>
+    <string name = "tinker_download_failed"> Installation package download failed </string>
+    <string name = "tinker_install_before_using"> Please install the latest application before using </string>
+    <string name = "tinker_wait_for_update"> Please wait for update </string>
+    <string name="tinker_upgrade_cancel">Cancel</string>
+    <string name="tinker_upgrade_install">Install</string>
+
+    <!-- update begin -->
+    <string name="update_title">Found the latest version</string>
+    <!-- update end -->
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#E6000000">
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/d128"
+        android:layout_marginStart="@dimen/d528"
+        android:layout_marginEnd="@dimen/d286"
+        android:layout_marginTop="@dimen/d362"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/d50"
+        android:text="@string/dialog_network_invalid"
+        />
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/d202"
+        android:layout_height="@dimen/d62"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_below="@id/tv_info"
+        android:layout_marginTop="@dimen/d86"
+        android:layout_marginStart="@dimen/d528"
+        android:background="@drawable/dialog_remind_action_bg_select"
+        android:gravity="center"
+        android:text="@string/dialog_remind_ok"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/d30"
+        />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:visibility="visible"
+        android:layout_width="@dimen/d202"
+        android:layout_height="@dimen/d62"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_toEndOf="@id/tv_confirm"
+        android:layout_alignTop="@id/tv_confirm"
+        android:layout_marginStart="@dimen/d6"
+        android:background="@drawable/dialog_remind_action_bg_select"
+        android:gravity="center"
+        android:text="@string/dialog_remind_cancel"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/d30"
+        />
+
+</RelativeLayout>

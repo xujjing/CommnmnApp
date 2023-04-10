@@ -1,0 +1,191 @@
+@startuml
+
+'=======================================================================
+'=======================================================================
+'申明参与者
+'申明参与者，可以使用 participant 关键词，也可以使用下面的参与者 分类关键词来申明参与者：
+'    actor
+'    boundary
+'    control
+'    entity
+'    database
+'不同的参与者类型，其图标也是不一样的。
+'使用hide footbox关键字移除脚注。
+/'
+  actor Foo1
+  boundary Foo2
+  control Foo3
+  entity Foo4
+  database Foo5
+  Foo1 -> Foo2 : To boundary
+  Foo1 -> Foo3 : To control
+  Foo1 -> Foo4 : To entity
+  Foo1 -> Foo5 : To database
+  hide footbox
+'/
+
+
+
+'=======================================================================
+'=======================================================================
+'箭头的样式
+'消息序号
+/'
+title Simple Comunication example
+
+ actor Bob #red
+  ' The only defference between actor
+  ' and participant is the drawing
+  participant Alice
+  participant "I have a really\nlong name" as L #99ff99
+
+  autonumber
+  Alice -[#blue]\\ Bob: Authentication Request
+  Bob ->> Alice: Authentication Response
+
+  autonumber 5
+  Bob ->o L: Log transaction
+  Bob <<->> L: Log transaction
+
+  autonumber 5 "<b>[000]"
+  Bob ->o L: Log transaction
+  Bob <<->> L: Log transaction
+
+ autonumber 40 10 "<font color=red>Message 0  "
+  Bob -> Alice : Yet another authentication Request
+  Bob <- Alice : Yet another authentication Response
+'/
+
+
+'=======================================================================
+'=======================================================================
+'消息分组
+'有时候可能需要对消息进行分组，那么可以使用下面的关键词来实现：
+'    alt/else
+'    opt
+'    loop
+'    par
+'    break
+'    critical
+'    group, 这个关键词后面的文字会作为组名显示在图形上
+/'
+Alice -> Bob: Authentication Request
+
+  alt successful case
+    Bob -> Alice: Authentication Accepted
+  else some kind of failure
+    Bob -> Alice: Atuhentication Failue
+    group My own label
+      Alice -> Log : Log attack start
+      loop 1000 times
+        Alice -> Bob: DNS Attack
+      end
+      Alice -> Log : Loag alice end
+    end
+  else Another type of failue
+    Bob -> Alice: Please repeat
+  end
+'/
+
+
+'=======================================================================
+'=======================================================================
+'消息注解（Notes on messages）
+'我们可能经常会在消息的左边或右边使用注解，要添加注解，
+'只要使用 note left 或 note right 关键词就可以了。
+/'
+Alice -> Bob : hello
+  note left: this is a first note
+
+  Bob -> Alice : ok
+  note right: this is anther note
+
+  Bob -> Bob : I am thinking
+  note left
+       a note
+       can also be defined
+       on several lines
+  end note
+'/
+
+
+'=======================================================================
+'=======================================================================
+'生命线的激活与撤销
+'关键字activate和deactivate用来表示参与者的生命活动。
+/'
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+
+User -> A: DoWork
+activate A
+
+A -> B: Create Request
+activate B
+
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+
+B --> A: Request Created
+deactivate B
+
+A --> User: Done
+deactivate A
+
+newpage
+'还可以使用嵌套的生命线，并且运行给生命线添加颜色。
+participant User
+
+User -> A: DoWork
+activate A #FFBBBB
+
+A -> A: Internal call
+activate A #DarkSalmon
+
+A -> B: << createRequest >>
+activate B
+
+B --> A: RequestCreated
+deactivate B
+deactivate A
+A -> User: Done
+deactivate A
+'/
+
+
+'=======================================================================
+'=======================================================================
+'进入和发出消息
+/'
+[-> A: DoWork
+
+activate A
+
+A -> A: Internal call
+activate A
+
+A ->] : << createRequest >>
+
+A<--] : RequestCreated
+deactivate A
+[<- A: Done
+deactivate A
+'/
+
+
+
+'=======================================================================
+'=======================================================================
+'构造类型和圈点
+/'
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
+
+Bob->Alice: First message
+'/
+
+@enduml

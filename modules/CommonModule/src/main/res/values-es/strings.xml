@@ -1,0 +1,30 @@
+<resources>
+    <string name="permission_tip">Para una mejor experienci,  habilite los permisos.</string>
+    <!-- 升级begin -->
+    <string name="dialog_title_apk_newest"> Esta ya es la última versión </string>
+    <string name="dialog_title_apk_upgrade"> Se encuentró la última versión, por favor actualice. </string>
+    <string name="dialog_install_and_reopen"> Instalar y reiniciar</string>
+    <string name="dialog_patch_effect_next_time"> Instale el patch</string>
+    <string name="dialog_patch_wait_for_restart"> Instalando el patch, espere para reiniciar</string>
+    <string name="dialog_install_to_upgrade"> Instale para actualizar la última versión</string>
+    <string name="dialog_download_failed"> Error al descargar el paquete de instalación </string>
+    <string name="dialog_install_before_using"> Instale la última versión antes de usar </string>
+    <string name="dialog_wait_for_update"> Por favor aguarde para la actualización </string>
+    <string name="dialog_upgrade_cancel">Cancelar</string>
+    <string name="dialog_upgrade_install">Instalar</string>
+    <string name="dialog_found_latest_version">Se encuentró la última versión</string>
+
+    <string name="dialog_remind_cancel">Cancelar</string>
+    <string name="dialog_remind_ok">Ok</string>
+
+    <string name="dialog_connect_server_failed">Falla en la conexión, comuníquese con el proveedor de servicios(%s)</string>
+    <string name="dialog_server_invalid_vod">No eres VIP de VOD, vaya a "Mi cuenta -> Pago" para realizar la compra</string>
+    <string name="dialog_server_expired">Su servicio ha caducado, vaya a "Mi cuenta-> pago" y renuévelo</string>
+    <string name="dialog_network_invalid">La red no es válida, abra la red</string>
+    <string name="language_no_subtitle">Sin subtítulos</string>
+    <string name="language_unknown_audio">Audio Desconocido</string>
+    <string name="dialog_delete">Borrar</string>
+    <string name="dialog_delete_all">Eliminar Todos</string>
+    <string name="dialog_delete_check">¿Estás seguro de que para eliminar la descarga?</string>
+    <!-- 升级 end -->
+</resources>

@@ -1,0 +1,225 @@
+@startuml
+
+'=======================================================================
+'=======================================================================
+'类之间的关系
+'类之间的关系通过下面的符号定义 :
+    'Type	      Symbol	  Drawing
+    'Extension	   <|--
+    'Composition   *--
+    'Aggregation   o--
+'使用.. 来代替 -- 可以得到点 线.
+'在这些规则下，也可以绘制下列图形
+/'
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+newpage
+Class11 <|.. Class12
+Class13 --> Class14
+Class15 ..> Class16
+Class17 ..|> Class18
+Class19 <--* Class20
+newpage
+Class21 #-- Class22
+Class23 x-- Class24
+Class25 }-- Class26
+Class27 +-- Class28
+Class29 ^-- Class30
+'/
+
+
+'=======================================================================
+'=======================================================================
+'关系上的标识
+'在关系之间使用标签来说明时, 使用 :后接 标签文字。
+'对元素的说明，你可以在每一边使用 "" 来说明.
+/'
+Class01 "1" *-- "many" Class02 : contains
+Class03 o-- Class04 : aggregation
+Class05 --> "1" Class06
+newpage
+'在标签的开始或结束位置添加< 或 >以表明是哪个对象作用到哪个对象上。
+class Car
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+'/
+
+
+'=======================================================================
+'=======================================================================
+'添加成员方法和变量
+'为了声明域或者方法，你可以使用 后接域名或方法名。
+'系统检查是否有括号来判断是方法还是域。
+/'
+Object <|-- ArrayList
+Object : equals()
+ArrayList : Object[] elementData
+ArrayList : size()
+newpage
+'也可以使用{} 把域或者方法括起来
+'注意，这种语法对于类型/名字的顺序是非常灵活的。
+class Dummy {
+  String data
+  String name
+  void methods()
+}
+newpage
+'定义可访问性
+'一旦你定义了域或者方法，你可以定义 相应条目的可访问性质。
+'    Character	Icon for field	Icon for method	Visibility
+'    -			private
+'    #			protected
+'    ~			package private
+'    +			public
+class Dummy {
+ -field1
+ #field2
+ -method()
+ ~method1()
+ +method2()
+}
+newpage
+'抽象与静态
+'通过修饰符{static}或者{abstract}，可以定义静态或者抽象的方法或者属性。
+class Dummy {
+  {static} String id
+  {abstract} void methods()
+}
+'/
+
+
+'=======================================================================
+'=======================================================================
+'高级类体
+'PlantUML默认自动将方法和属性重新分组，你可以自己定义分隔符来重排方法和属性，
+'下面的分隔符都是可用的：--..==__.
+'还可以在分隔符中添加标题：
+/'
+class Foo1 {
+  You can use
+  several lines
+  ..
+  as you want
+  and group
+  ==
+  things together.
+  __
+  You can have as many groups
+  as you want
+  --
+  End of class
+}
+
+class User {
+  .. Simple Getter ..
+  + getName()
+  + getAddress()
+  .. Some setter ..
+  + setName()
+  __ private data __
+  int age
+  -- encrypted --
+  String password
+}
+'/
+
+
+'=======================================================================
+'=======================================================================
+'用关键字abstract或abstract class来定义抽象类。抽象类用斜体显示。
+'也可以使用interface, annotation 和 enum关键字。
+/'
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+annotation SuppressWarnings
+'/
+
+
+'=======================================================================
+'=======================================================================
+'包
+'你可以通过关键词 package 声明包，同时可选的来声明对应的背景色（通过使用html色彩代码或名称）。
+'注意：包可以被定义为嵌套。
+/'
+package "Classic Collections" #DDDDDD {
+  Object <|-- ArrayList
+}
+
+package net.sourceforge.plantuml {
+  Object <|-- Demo1
+  Demo1 *- Demo2
+}
+newpage
+'你还可以通过以下的命令来设置默认样式 : skinparam packageStyle,或者对包使用对应的模板:
+scale 750 width
+package foo1 <<Node>> {
+  class Class1
+}
+
+package foo2 <<Rectangle>> {
+  class Class2
+}
+
+package foo3 <<Folder>> {
+  class Class3
+}
+
+package foo4 <<Frame>> {
+  class Class4
+}
+
+package foo5 <<Cloud>> {
+  class Class5
+}
+
+package foo6 <<Database>> {
+  class Class6
+}
+'/
+
+
+'=======================================================================
+'=======================================================================
+'改变箭头方向
+'类之间默认采用两个破折号 -- 显示出垂直 方向的线.
+'要得到水平方向的可以像这样使用单破折号 (或者点):
+/'
+Room o- Student
+Room *-- Chair
+newpage
+'你也可以通过改变倒置链接来改变方向
+Student -o Room
+Chair --* Room
+newpage
+'也可通过在箭头内部使用关键字， 例如left, right, up 或者 down，来改变方向
+foo -left-> dummyLeft
+foo -right-> dummyRight
+foo -up-> dummyUp
+foo -down-> dummyDown
+'/
+
+@enduml

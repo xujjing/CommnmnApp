@@ -1,0 +1,15 @@
+#ifndef COLLECTLOGUTIL_IJKMEDIA_LOGFILE_H
+#define COLLECTLOGUTIL_IJKMEDIA_LOGFILE_H
+
+#define IJKMEDIA_LOGFILE_VERBOSE  2
+#define IJKMEDIA_LOGFILE_DEBUG    3
+#define IJKMEDIA_LOGFILE_INFO     4
+#define IJKMEDIA_LOGFILE_WARN     5
+#define IJKMEDIA_LOGFILE_ERROR    6
+#define IJKMEDIA_LOGFILE_ASSERT   7
+
+#define IJKMEDIA_LOG_BUF_SIZE	1024
+
+extern "C" int ijkmedia_log_file(int priority, const char* tag, const char* message);
+
+#endif //COLLECTLOGUTIL_IJKMEDIA_LOGFILE_H

@@ -1,0 +1,84 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+//        google()
+//        jcenter()
+//        maven { url "https://jitpack.io" }
+
+        maven {url 'https://dl.google.com/dl/android/maven2/'}
+        maven {url 'https://www.jitpack.io'}
+        jcenter()
+
+//        maven { url 'https://dl.bintray.com/umsdk/release' }//（友盟的Common的包下载失败 注意由原来的maven { url 'https://dl.bintray.com/umsdk/release' } 修改为：maven { url 'https://repo1.maven.org/maven2/' }）
+        maven { url 'https://repo1.maven.org/maven2/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def getVersionNameFromDate() {
+    def calendar = Calendar.getInstance(Locale.CHINESE)
+    def mm_dd = (calendar.get(Calendar.MONTH) + 1) + "." +calendar.get(Calendar.DAY_OF_MONTH)
+    return mm_dd
+}
+
+ext {
+    android = [
+            applicationId:"com.iptv.aovivo.aovod",
+//            applicationId:"com.iptv.stv.rich",
+            compileSdkVersion: 30,
+            targetSdkVersion : 30,
+            minSdkVersion    : 17,
+            buildToolsVersion: "30.0.2",
+            versionCode:31,
+            versionName:"3." + getVersionNameFromDate() + ".0" //24 ->2.8.12.0  14 -> 1.7.8.2 13 ->1.7.8.0, 12 -> 1.7.7.1
+    ]
+
+    dependencies = [
+            test_junit : "junit:junit:4.12",
+            test_runner : "androidx.test:runner:1.3.0",
+            test_espresso : "androidx.test.espresso:espresso-core:3.3.0",
+
+            appcompat : "androidx.appcompat:appcompat:1.2.0",
+            multidex : "androidx.multidex:multidex:2.0.1",
+            recyclerview : "androidx.recyclerview:recyclerview:1.1.0",
+            viewpager2 : "androidx.viewpager2:viewpager2:1.0.0",
+            constraintlayout :  "androidx.constraintlayout:constraintlayout:2.0.0",
+            lifecycle_extensions :  "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            lifecycle_runtime : 'androidx.lifecycle:lifecycle-runtime:2.2.0',
+            butterknife :  "com.jakewharton:butterknife:10.2.3",
+            butterknife_compiler :  "com.jakewharton:butterknife-compiler:10.2.3",
+
+            okhttp3 : "com.squareup.okhttp3:okhttp:3.9.1",
+
+            glide_okhttp3 : "com.github.bumptech.glide:okhttp3-integration:4.9.0",
+            glide_compiler : "com.github.bumptech.glide:compiler:4.9.0",
+            navigation_fragment : "androidx.navigation:navigation-fragment:2.3.1",
+            navigation_ui : "androidx.navigation:navigation-ui:2.3.1",
+
+            timber : "com.jakewharton.timber:timber:4.1.1",
+            //glide
+            glide : 'com.github.bumptech.glide:okhttp3-integration:4.9.0',
+            glide_compiler : 'com.github.bumptech.glide:compiler:4.9.0',
+            material: 'com.google.android.material:material:1.0.0'
+    ]
+
+}

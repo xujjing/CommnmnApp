@@ -1,0 +1,187 @@
+apply plugin: 'com.android.application'
+
+static def getDate() {
+    def formattedDate = new Date().format('HH-mm')
+    return formattedDate
+}
+//渠道
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+        multiDexEnabled true
+        repositories {
+            flatDir {
+                dirs 'libs','../libraries/aars'
+            }
+        }
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a','arm64-v8a'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(".\\yoostar")
+            keyAlias "yoostar"
+            keyPassword "yoostar"
+            storePassword "yoostar"
+        }
+
+        debug {
+            storeFile file(".\\yoostar")
+            keyAlias "yoostar"
+            keyPassword "yoostar"
+            storePassword "yoostar"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.all { //output ->
+            //def oldFile = output.outputFile
+            def projectName = 'EnjoyCinema_V'
+            def buildTypeRelease = 'release'
+            def buildTypeDebug = 'debug'
+            def dateTime = getDate()
+            String versionName = variant.versionName //= variant.productFlavors[0].versionName;
+            println(versionName)
+            /*if(versionName == null) {
+                versionName = defaultConfig.versionName
+                println(versionName)
+            }*/
+            def fileName
+            if (variant.buildType.name.equals(buildTypeRelease)) {//正式版本
+                //println(variant.productFlavors[0].name)
+                def releaseApkName = projectName + versionName + '_' + dateTime +  "-release" + '.apk'
+                //output.outputFile = new File(oldFile.parent, releaseApkName)
+                fileName = releaseApkName
+            } else if (variant.buildType.name.equals(buildTypeDebug)) {//debug
+                def debugApkName = projectName + versionName + '_' + dateTime + '_debug' + '.apk'
+                //output.outputFile = new File(oldFile.parent, debugApkName)
+                fileName = debugApkName
+            }
+            outputFileName = fileName
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation  rootProject.ext.dependencies.appcompat
+    testImplementation  rootProject.ext.dependencies.test_junit
+    androidTestImplementation  rootProject.ext.dependencies.test_runner
+    androidTestImplementation  rootProject.ext.dependencies.test_espresso
+    implementation "androidx.navigation:navigation-fragment:2.3.1"
+    implementation "androidx.navigation:navigation-ui:2.3.1"
+
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    implementation project(':modules:CommonModule')
+    implementation project(':modules:UserModule2')
+    implementation project(':modules:VodModule2')
+    implementation 'com.google.android.exoplayer:exoplayer:r1.5.11'
+}
+
+tasks.whenTaskAdded {
+    task ->
+        android.productFlavors.all {
+            //我只需要assembleFlavorBProductRelease这个task（正式环境打包发布的情况下）才保存mapping.txt
+            def taskName = task.name
+            System.out.println("[whenTaskAdded]->taskName=" + taskName)
+            if (taskName.startsWith("assemble") && taskName.endsWith("Release")) {
+                task.doLast {
+                    println "\n\n=====复制mapping.txt文件出来======"
+                    copyFile(taskName);
+                }
+            }
+        }
+}
+
+void copyFile(def taskName){
+    String desktopDir = "$rootDir"
+    println(desktopDir)
+    def dateTime = new java.text.SimpleDateFormat("yy_MM_dd-HH_mm").format(new Date())
+    File cacheFile = new File(desktopDir + java.io.File.separator + "bakApk" + java.io.File.separator + dateTime + java.io.File.separator + taskName)
+    if (!cacheFile.exists()) {
+        cacheFile.mkdirs()
+    }
+    android.productFlavors.all { flavorTow ->
+        copy {
+            println "\n\n=======cacheFile->" + cacheFile
+            from "$buildDir" + '/outputs/mapping/' + flavorTow.name + "/release"
+            include "mapping.txt"
+            into cacheFile.getPath()
+            rename {
+                flavorTow.name + android.defaultConfig.versionName + "_" + "_mapping.txt"
+            }
+        }
+        copy {
+            from "$buildDir" + '/outputs/mapping/' + flavorTow.name + "/release"
+            include "resources.txt"
+            into cacheFile.getPath()
+            rename {
+                flavorTow.name + android.defaultConfig.versionName + "_" + "_resources.txt"
+            }
+        }
+        copy {
+            from "$buildDir" + '/outputs/mapping/' + flavorTow.name + "/release"
+            include "seeds.txt"
+            into cacheFile.getPath()
+            rename {
+                flavorTow.name + android.defaultConfig.versionName + "_" + "_seeds.txt"
+            }
+        }
+        copy {
+            from "$buildDir" + '/outputs/mapping/' + flavorTow.name + "/release"
+            include "seeds.txt"
+            into cacheFile.getPath()
+            rename {
+                flavorTow.name + android.defaultConfig.versionName + "_" + "_usage.txt"
+            }
+        }
+        copy {
+            from "$buildDir" + '/outputs/apk'
+            //注意通配符
+            include "*" + flavorTow.name + "*.apk"
+            into cacheFile.getPath()
+            rename {
+                flavorTow.name + android.defaultConfig.versionName + "_" + "_.apk"
+            }
+        }
+    }
+}
+

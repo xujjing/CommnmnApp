@@ -1,0 +1,7 @@
+<resources>
+    <string name="loading_failed">falha ao carregar, tente novamente</string>
+    <string name="no_data">SEM DADOS</string>
+    <string name="loading_more">Carregando mais...</string>
+    <string name="no_more_data">Sem mais dados</string>
+    <string name="loading_more_failed">O carregamento falhou, por favor tente novamente</string>
+</resources>

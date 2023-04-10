@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_tip_bg">#999999</color>
+    <color name="color_tip_fg">#FFFFFFFF</color>
+    <color name="color_FFAAAAAA">#FFAAAAAA</color>
+    <color name="color_33FFFFFF">#33FFFFFF</color>
+    <color name="color_33000000">#33000000</color>
+    <color name="color_1AFFFFFF">#1AFFFFFF</color>
+    <color name="color_313131">#313131</color>
+    <color name="color_1A1A1A">#1A1A1A</color>
+
+    <color name="color_ffaaaaaa">#FFAAAAAA</color>
+    <color name="color_0D0D0D">#0D0D0D</color>
+    <color name="color_000000">#000000</color>
+</resources>

@@ -1,0 +1,71 @@
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        repositories {
+            flatDir {
+                dirs 'libs'
+            }
+        }
+
+        externalNativeBuild {
+            ndkBuild {
+                cppFlags "-std=c++11"
+//                cFlags ""
+            }
+        }
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a','arm64-v8a'
+            // 最新的NDK r17版本，已经去掉了armeabi、mips、mips64的ABI支持。armeabi-v7a会兼容armeabi：
+        }
+    }
+
+    sourceSets { main { jni.srcDirs = ['src/main/cpp', 'src/main/cpp/'] } }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/cpp/Android.mk'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        def taskName = variant.name
+        tasks.all {
+            if ("assemble${taskName.capitalize()}".equalsIgnoreCase(it.name)) {
+                it.doLast {
+                    copy {
+                        def destPath = "${rootDir}/libraries/aars"
+                        from variant.outputs.first().outputFile
+                        into destPath
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation  rootProject.ext.dependencies.appcompat
+    testImplementation  rootProject.ext.dependencies.test_junit
+    androidTestImplementation  rootProject.ext.dependencies.test_runner
+    androidTestImplementation  rootProject.ext.dependencies.test_espresso
+
+}

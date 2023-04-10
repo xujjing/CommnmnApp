@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        repositories {
+            flatDir {
+                dirs 'libs'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        def taskName = variant.name
+        tasks.all {
+            if ("assemble${taskName.capitalize()}".equalsIgnoreCase(it.name)) {
+                it.doLast {
+                    copy {
+                        def destPath = "${rootDir}/libraries/aars"
+                        from variant.outputs.first().outputFile
+                        into destPath
+                    }
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation  rootProject.ext.dependencies.appcompat
+    testImplementation  rootProject.ext.dependencies.test_junit
+    androidTestImplementation  rootProject.ext.dependencies.test_runner
+    androidTestImplementation  rootProject.ext.dependencies.test_espresso
+
+    implementation  rootProject.ext.dependencies.multidex
+    //tinker的核心库
+    api("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
+
+    //download file
+    implementation  rootProject.ext.dependencies.okhttp3
+    testImplementation 'junit:junit:4.12'    //junit4相关配置
+}

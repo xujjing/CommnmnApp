@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/d50"
+              android:layout_marginStart="@dimen/d12"
+              android:layout_marginEnd="@dimen/d12"
+              android:clickable="true"
+              android:focusable="true"
+
+              android:background="@drawable/home_bottom_item_common_select"
+
+              android:text="Home"
+              android:paddingStart="@dimen/d20"
+              android:paddingEnd="@dimen/d20"
+              android:gravity="center"
+              android:textColor="#FFFFFFFF"
+              android:textSize="@dimen/d36">
+</TextView>

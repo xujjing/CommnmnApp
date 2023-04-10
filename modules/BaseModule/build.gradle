@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation  rootProject.ext.dependencies.appcompat
+    testImplementation  rootProject.ext.dependencies.test_junit
+    androidTestImplementation  rootProject.ext.dependencies.test_runner
+    androidTestImplementation  rootProject.ext.dependencies.test_espresso
+    implementation rootProject.ext.dependencies.butterknife
+    annotationProcessor rootProject.ext.dependencies.butterknife_compiler
+
+    api rootProject.ext.dependencies.constraintlayout
+    api rootProject.ext.dependencies.recyclerview
+    api rootProject.ext.dependencies.viewpager2
+    api 'org.simple:androideventbus:1.0.5.1'
+    api rootProject.ext.dependencies.lifecycle_extensions
+
+    api rootProject.ext.dependencies.glide_okhttp3
+    annotationProcessor rootProject.ext.dependencies.glide_compiler
+
+//    api 'me.jessyan:autosize:1.2.1'
+
+    api 'io.reactivex.rxjava2:rxjava:2.2.12'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'com.trello.rxlifecycle3:rxlifecycle-android:3.1.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-components:3.1.0'
+    api rootProject.ext.dependencies.multidex
+}

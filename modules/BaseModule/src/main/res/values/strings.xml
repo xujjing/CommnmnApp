@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">basemodule</string>
+    <string name="loading_failed">Loading failed, try again</string>
+    <string name="no_data">NO DATA</string>
+    <string name="loading_more">Loading more...</string>
+    <string name="no_more_data">No more data</string>
+    <string name="loading_more_failed">Loading more failed</string>
+</resources>

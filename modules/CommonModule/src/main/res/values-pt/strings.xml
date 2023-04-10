@@ -1,0 +1,30 @@
+<resources>
+    <string name="permission_tip">Para uma experiência melhor, habilite as permissões.</string>
+    <!-- 升级begin -->
+    <string name="dialog_title_apk_newest"> Esta já é a última versão </string>
+    <string name="dialog_title_apk_upgrade"> Encontre a versão mais recente, atualize a versão.</string>
+    <string name="dialog_install_and_reopen"> Instale e reinicie</string>
+    <string name="dialog_patch_effect_next_time"> Instale o patch</string>
+    <string name="dialog_patch_wait_for_restart"> Instalando o patch, aguarde a reinicialização </string>
+    <string name="dialog_install_to_upgrade"> Instale para atualizar o aplicativo mais recente </string>
+    <string name="dialog_download_failed"> O download do pacote de instalação falhou</string>
+    <string name="dialog_install_before_using"> Instale a versão mais recente antes de usar </string>
+    <string name="dialog_wait_for_update"> Por favor aguarde a atualização </string>
+    <string name="dialog_upgrade_cancel">Cancelar</string>
+    <string name="dialog_upgrade_install">Instalar</string>
+    <string name="dialog_found_latest_version">Encontrou-se a última versão</string>
+
+    <string name="dialog_remind_cancel">Cancelar</string>
+    <string name="dialog_remind_ok">Ok</string>
+
+    <string name="dialog_connect_server_failed">Falha na conexão, entre em contato com o provedor de serviços(%s)</string>
+    <string name="dialog_server_invalid_vod">Você não é VIP DE VOD, vá para "Minha Conta -> Pagamento" para realizar pagamento</string>
+    <string name="dialog_server_expired">Seu serviço expirou, vá para "Minha conta-> pagamento" e renove-o</string>
+    <string name="dialog_network_invalid">A rede é inválida, por favor intente novamente</string>
+    <string name="language_no_subtitle">Sem legenda</string>
+    <string name="language_unknown_audio">Áudio Desconhecido</string>
+    <string name="dialog_delete">Excluir</string>
+    <string name="dialog_delete_all">Apagar Tudo</string>
+    <string name="dialog_delete_check">Tem certeza que deseja excluir o download?</string>
+    <!-- 升级 end -->
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="@dimen/d920"
+        android:layout_height="@dimen/d740"
+        android:layout_gravity="center"
+        android:background="@mipmap/force_upgrad_bg">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d36"
+            android:layout_marginTop="@dimen/d286"
+            android:text="@string/update_title"
+            android:textColor="#FFF"
+            android:textSize="@dimen/d38" />
+
+        <ScrollView
+            android:id="@+id/sv_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d186"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/d38"
+            android:layout_marginRight="@dimen/d38">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/d6">
+
+                <TextView
+                    android:id="@+id/tv_conent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:focusable="true"
+                    android:text=""
+                    android:textColor="#FFF"
+                    android:textSize="@dimen/d28"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/progress_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d50"
+            android:layout_below="@id/sv_info"
+            android:layout_marginTop="@dimen/d36">
+            <ProgressBar
+                android:id="@+id/sb_progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="@dimen/d720"
+                android:layout_height="@dimen/d45"
+                android:layout_marginLeft="@dimen/d36"
+                android:layout_gravity="center_vertical"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/force_progress_style"
+                android:splitTrack="false"
+                android:thumb="@null" />
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#FFF"
+                android:textSize="@dimen/d32" />
+            <TextView
+                android:id="@+id/tv_net_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/d770"
+                android:text="0KB/S"
+                android:textColor="#FFF"
+                android:textSize="@dimen/d32" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/progress_layout"
+            android:layout_marginTop="@dimen/d32"
+            android:textSize="@dimen/d36"
+            android:textColor="#FFF"
+            />
+
+        <TextView
+            android:id="@+id/bt_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/d50"
+            android:layout_marginRight="@dimen/d56"
+            android:focusable="true"
+            android:visibility="gone"
+            android:textColor="#FFF"
+            android:background="@drawable/upgrade_word_select"
+            android:textSize="@dimen/d38"
+            android:paddingLeft="@dimen/d12"
+            android:paddingRight="@dimen/d12"
+            android:paddingTop="@dimen/d5"
+            android:paddingBottom="@dimen/d5"
+            android:text="@string/tinker_upgrade_cancel"/>
+
+        <TextView
+            android:id="@+id/bt_install"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/d50"
+            android:layout_toLeftOf="@id/bt_cancel"
+            android:layout_marginRight="@dimen/d48"
+            android:textColor="#FFF"
+            android:visibility="gone"
+            android:background="@drawable/upgrade_word_select"
+            android:focusable="true"
+            android:textSize="@dimen/d38"
+            android:paddingLeft="@dimen/d12"
+            android:paddingRight="@dimen/d12"
+            android:paddingTop="@dimen/d5"
+            android:paddingBottom="@dimen/d5"
+            android:text="@string/tinker_upgrade_install"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="150dp"
+        android:scaleType="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/force_upgrade_icon" />
+
+</FrameLayout>

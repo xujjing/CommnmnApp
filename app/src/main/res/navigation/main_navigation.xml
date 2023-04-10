@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 The Android Open Source Project
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/home_dest">
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.stv.iptv.app.HomeFragment"
+        android:label="@string/app_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!--   =================== User ===================    -->
+    <fragment
+        android:id="@+id/user_login_dest"
+        android:name="com.streambus.usermodule.module.login.UserLoginFragment"
+        android:label="@string/user_login"
+        tools:layout="@layout/fragment_user_login" />
+
+    <fragment
+        android:id="@+id/user_account_dest"
+        android:name="com.streambus.usermodule.module.account.UserAccountFragment"
+        android:label="@string/user_account"
+        tools:layout="@layout/fragment_user_account" />
+
+    <fragment
+        android:id="@+id/user_setting_dest"
+        android:name="com.streambus.usermodule.module.setting.UserSettingFragment"
+        android:label="@string/user_setting"
+        tools:layout="@layout/fragment_user_setting" />
+
+    <!--   =================== VOD ===================    -->
+    <fragment
+        android:id="@+id/vod_search_dest"
+        android:name="com.streambus.vodmodule.view.search.VodSearchFragment"
+        android:label="@string/vod_search"
+        tools:layout="@layout/vod_fragment_search" />
+    <fragment
+        android:id="@+id/vod_download_dest"
+        android:name="com.streambus.vodmodule.view.download.VodDownloadFragment"
+        android:label="@string/vod_download"
+        tools:layout="@layout/vod_fragment_download" />
+    <fragment
+        android:id="@+id/vod_local_play_dest"
+        android:name="com.streambus.vodmodule.view.download.VodLocalPlayFragment"
+        android:label="@string/vod_local_play"
+        tools:layout="@layout/vod_fragment_local_play" />
+
+    <fragment
+        android:id="@+id/vod_channel_dest"
+        android:name="com.streambus.vodmodule.view.channel.VodChannelFragment"
+        android:label="@string/vod_channel"
+        tools:layout="@layout/vod_fragment_channel" />
+
+    <fragment
+        android:id="@+id/vod_series_movie_dest"
+        android:name="com.streambus.vodmodule.view.dseries.VodSeriesMovieFragment"
+        android:label="@string/vod_series_movie"
+        tools:layout="@layout/vod_fragment_series_movie" />
+
+    <fragment
+        android:id="@+id/vod_detail_dest"
+        android:name="com.streambus.vodmodule.view.detail.VodDetailFragment"
+        android:label="@string/vod_detail"
+        tools:layout="@layout/vod_fragment_detail" />
+
+    <fragment
+        android:id="@+id/vod_play_dest"
+        android:name="com.streambus.vodmodule.view.play.VodPlayFragment"
+        android:label="@string/vod_play"
+        tools:layout="@layout/vod_fragment_play" />
+
+    <fragment
+        android:id="@+id/vod_trailer_play_dest"
+        android:name="com.streambus.vodmodule.view.trailer.VodTrailerPlayFragment"
+        android:label="@string/vod_trailer_play"
+        tools:layout="@layout/vod_fragment_trailer_play" />
+
+</navigation>

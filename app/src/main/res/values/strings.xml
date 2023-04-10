@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Enjoy Cinema</string>
+    <string name="phone_permission">If the Device ID is not authorized, Something will not be available.</string>
+    <string name="phone_audio">If the Device ID is not authorized, Something will not be available.</string>
+    <string name="press_agin">Press again to exit</string>
+    <string name="please_grant">Please grant app storage permission</string>
+    <string name="please_enable">Please enable app storage permission in settings</string>
+    <string name="homepage_watchlist">Watchlist</string>
+    <string name="homepage_home">HOME</string>
+    <string name="homepage_movie">Movie</string>
+    <string name="homepage_series">Series</string>
+    <string name="homepage_kids">Kids</string>
+</resources>

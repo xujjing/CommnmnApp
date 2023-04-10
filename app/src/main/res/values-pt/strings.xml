@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Enjoy Cinema</string>
+    <string name="phone_permission">Se o ID do dispositivo não for autorizado, o uso não estará disponível.</string>
+    <string name="phone_audio">Se o ID do dispositivo não for autorizado, o uso não estará disponível.</string>
+    <string name="press_agin">Pressione novamente para sair</string>
+    <string name="please_grant">Autorize permissão de armazenamento do aplicativo</string>
+    <string name="please_enable">Ative a permissão de armazenamento do aplicativo nas configurações</string>
+    <string name="homepage_watchlist">Watchlist</string>
+    <string name="homepage_home">Página inicial</string>
+    <string name="homepage_movie">Filme</string>
+    <string name="homepage_series">Séries</string>
+    <string name="homepage_kids">Kids</string>
+</resources>

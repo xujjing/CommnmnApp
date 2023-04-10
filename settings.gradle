@@ -1,0 +1,10 @@
+include ':app'
+include ':modules:BaseModule'
+include ':modules:CommonModule'
+include ':modules:UserModule2'
+include ':modules:VodModule2'
+//include ':modules:VodModule'
+
+include ':libraries:IjkLib'
+//include ':libraries:logLib'
+//include ':libraries:tinkerLib'

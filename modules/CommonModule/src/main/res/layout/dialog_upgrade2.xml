@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#E6000000"
+    >
+
+    <RelativeLayout
+        android:id="@+id/upgrade_info_layout"
+        android:layout_width="@dimen/d1000"
+        android:layout_height="@dimen/d420"
+        android:layout_gravity="center"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/dialog_title_apk_upgrade"
+            android:textColor="#FFF"
+            android:textSize="@dimen/d50" />
+
+        <ScrollView
+            android:id="@+id/sv_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d200"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="@dimen/d30">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_conent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:lineSpacingExtra="@dimen/d12"
+                    android:text="Version:8.2.17
+                    \n1.Wifi dirver update(wifi loss connect problem fixed).
+                    \n2.Some apks update.
+                    \n3.Some bug fixed."
+                    android:textColor="#FFF"
+                    android:textSize="@dimen/d30"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/progress_layout"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d50"
+            android:layout_below="@id/sv_info"
+            android:layout_marginTop="@dimen/d50">
+            <ProgressBar
+                android:id="@+id/sb_progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="@dimen/d620"
+                android:layout_height="@dimen/d15"
+                android:layout_gravity="center_vertical"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/upgrade_progress_style"
+                android:splitTrack="false"
+                android:thumb="@null" />
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/d70"
+                android:textColor="#FFF"
+                android:visibility="gone"
+                android:textSize="@dimen/d32" />
+            <TextView
+                android:id="@+id/tv_net_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/d636"
+                android:text="0KB/S"
+                android:textColor="#FFF"
+                android:textSize="@dimen/d30" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sv_info"
+            android:layout_marginTop="@dimen/d50"
+            android:textSize="@dimen/d30"
+            android:textColor="#FFF"
+            />
+
+        <TextView
+            android:id="@+id/bt_install"
+            android:layout_width="@dimen/d202"
+            android:layout_height="@dimen/d62"
+            android:layout_below="@id/sv_info"
+            android:layout_marginTop="@dimen/d50"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            android:text="@string/dialog_upgrade_install"/>
+
+        <TextView
+            android:id="@+id/bt_cancel"
+            android:layout_width="@dimen/d202"
+            android:layout_height="@dimen/d62"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible"
+            android:layout_toEndOf="@id/bt_install"
+            android:layout_alignTop="@id/bt_install"
+            android:layout_marginStart="@dimen/d6"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            android:text="@string/dialog_upgrade_cancel"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/remind_ignore_layout"
+        android:layout_width="@dimen/d1000"
+        android:layout_height="@dimen/d420"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/remind_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d50"
+            android:text="@string/dialog_title_apk_upgrade"
+            />
+
+        <ScrollView
+            android:id="@+id/remind_sv_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d200"
+            android:layout_below="@+id/remind_tv_title"
+            android:layout_marginTop="@dimen/d30">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/remind_tv_conent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:lineSpacingExtra="@dimen/d12"
+                    android:text="Version:8.2.17
+                    \n1.Wifi dirver update(wifi loss connect problem fixed).
+                    \n2.Some apks update.
+                    \n3.Some bug fixed."
+                    android:textColor="#FFF"
+                    android:textSize="@dimen/d30"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="@dimen/d202"
+            android:layout_height="@dimen/d62"
+            android:layout_below="@id/remind_sv_info"
+            android:layout_marginTop="@dimen/d50"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            android:text="@string/dialog_remind_ok"
+            />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="@dimen/d202"
+            android:layout_height="@dimen/d62"
+            android:layout_toEndOf="@id/tv_confirm"
+            android:layout_alignTop="@id/tv_confirm"
+            android:layout_marginStart="@dimen/d6"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            android:text="@string/dialog_remind_cancel"
+            />
+
+    </RelativeLayout>
+</FrameLayout>

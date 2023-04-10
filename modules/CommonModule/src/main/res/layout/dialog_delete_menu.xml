@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40000000">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d265"
+        android:layout_alignParentBottom="true"
+        android:background="#1A1A1B"
+        />
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/d170"
+        android:text="@string/dialog_delete_check"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/d30"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/d60"
+        >
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="@dimen/d250"
+            android:layout_height="@dimen/d62"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:text="@string/dialog_delete"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            />
+
+        <TextView
+            android:id="@+id/tv_delete_all"
+            android:visibility="visible"
+            android:layout_width="@dimen/d202"
+            android:layout_height="@dimen/d62"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="@dimen/d30"
+            android:background="@drawable/dialog_remind_action_bg_select"
+            android:gravity="center"
+            android:text="@string/dialog_delete_all"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/d30"
+            />
+    </LinearLayout>
+</RelativeLayout>

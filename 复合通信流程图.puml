@@ -1,0 +1,28 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+rectangle MessageServer {
+      (TCPHande) <. (heartMsg) : send
+      (httpServer) .> (TCPHande) : recv
+}
+
+rectangle SearchServer {
+  (UDPHande) .> (broadcast) : send
+  (monitor) .> (UDPHande) : recv
+}
+
+rectangle Observer
+rectangle CmdHandler
+rectangle Queue
+
+TCPHande --> Observer
+
+Observer -> CmdHandler
+
+Observer --> UDPHande
+
+Queue <.> Observer
+
+
+@enduml

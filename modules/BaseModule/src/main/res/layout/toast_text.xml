@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/remind_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FF19191A"
+    android:gravity="center"
+    android:paddingTop="@dimen/d15"
+    android:paddingBottom="@dimen/d15"
+    android:paddingLeft="@dimen/d27"
+    android:paddingRight="@dimen/d27"
+    android:textColor="#F1F1F1"
+    android:textSize="@dimen/d36"></TextView>

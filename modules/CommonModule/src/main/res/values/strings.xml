@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name" translatable="false">commonmodule</string>
+    <string name="permission_tip">A better experience requires you to turn on permissions.</string>
+    <!-- 升级begin -->
+    <string name="dialog_title_apk_newest"> Already the latest version </string>
+    <string name="dialog_title_apk_upgrade"> Found the latest version, need to upgrade </string>
+    <string name="dialog_install_and_reopen"> Please install and reopen </string>
+    <string name="dialog_patch_effect_next_time"> Installing patch and take effect next time </string>
+    <string name="dialog_patch_wait_for_restart"> Installing patch, please wait for restart </string>
+    <string name="dialog_install_to_upgrade"> Please install to upgrade the latest application </string>
+    <string name="dialog_download_failed"> Installation package download failed </string>
+    <string name="dialog_install_before_using"> Please install the latest application before using </string>
+    <string name="dialog_wait_for_update"> Please wait for update </string>
+    <string name="dialog_upgrade_cancel">Cancel</string>
+    <string name="dialog_upgrade_install">Install</string>
+    <string name="dialog_found_latest_version">Found the latest version</string>
+
+    <string name="dialog_remind_cancel">Cancel</string>
+    <string name="dialog_remind_ok">Ok</string>
+
+    <string name="dialog_connect_server_failed">Connect failed, please contact the service provider(%s)</string>
+    <string name="dialog_server_invalid_vod">You are not a VIP of VOD, please go to "My Account -> Payment" to subscribe</string>
+    <string name="dialog_server_expired">Your service has expired, please go to "My account->payment" and  renew it</string>
+    <string name="dialog_network_invalid">The network is invalid, please open the network</string>
+    <string name="language_no_subtitle">No Subtitle</string>
+    <string name="language_unknown_audio">Unknown Audio</string>
+    <string name="dialog_delete">Delete</string>
+    <string name="dialog_delete_all">Delete All</string>
+    <string name="dialog_delete_check">Are you sure that to delete download?</string>
+    <!-- 升级 end -->
+</resources>

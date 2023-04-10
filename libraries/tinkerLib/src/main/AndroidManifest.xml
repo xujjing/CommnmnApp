@@ -1,0 +1,37 @@
+<manifest package="com.streambus.tinkerlib"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application android:allowBackup="true"
+                 android:supportsRtl="true"
+    >
+
+        <activity android:name=".update.view.ForceUpgradeDialog"
+                  android:theme="@style/MyTranslucentTheme"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:taskAffinity="com.streambus.upgrade"
+                  android:launchMode="singleInstance"></activity>
+
+        <service android:name=".update.UpgradeService"
+                 android:exported="false"/>
+
+        <service android:name=".service.RestartIntentService"
+                 android:process=":restart"/>
+
+        <service
+            android:name="com.streambus.tinkerlib.service.SampleResultService"
+            android:exported="false"/>
+
+        <!--自定义名字 为避免重复建议设为：包名.fileprovider-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
