@@ -1,0 +1,618 @@
+●具备扎实的Java编程能力，掌握常用的算法、数据结构和设计模式。
+●掌握模块化、组件化的开发设计能力，使项目高内聚低耦合，提高易用性，方便开发。
+●具备丰富Android应用开发和UI架构设计经验，掌握MVP、MVVM 模式的设置开发能力。
+●掌握Navigation管理Fragment切换来实现单一Activity，通过自定义Router实现页面跳转。
+●掌握Android触摸、按键事件传递机制，具有丰富的解决滑动冲突、按键跳转问题的经验。
+●掌握Rxjava的使用和原理 具备处理复杂事务的能力 如：请求数据先使用缓存再刷新数据。
+●掌握Retrofit、OKHttp、Glide、GreenDao、lifecycle、bugly使用和源码分析能力。
+●掌握Android Profiler运行时分析来解决复杂问题和优化性能。
+●掌握jni开发，具有丰富的解决native中遇到问题的经验。
+●掌握多线程、NIO编程能力，熟悉TCP、UDP消息通信业务开发。
+●具有丰富的内部类设计和使用经验，掌握android内存泄漏的成因和处理。
+●具有丰富的AndroidTV开发经验，熟悉ijkplayer、exoplayer播放器的使用。
+
+本人本科学历，计算机专业，有6年以上Android手机和TV工作经验，具备扎实的Java编程能力，掌握常用的算法、数据结构和设计模式，
+拥有丰富Android应用开发和UI布局设计经验，掌握模块化、组件化的框架设计开发能力，对MVP、MVVM设计模式有深刻的理解，
+在项目担任着领导的角色，负责跟设计、后台沟通需求，制定项目任务计划，带领团队完成项目。
+
+工作描述
+在该公司，作为Android应用开发主管主要负责的工作有：
+
+1. 对系统框架相关技术和业务进行培训，指导开发人员开发。并解决系统开发、运行中出现的各种问题；
+
+2. 推动主要的技术决策，并最终表达为软件构架；
+
+3. 确定和文档化系统相对构架而言意义重大的方面，包括系统的需求、设计、实施和部署等“视图”；
+
+4. 确定设计元素的分组以及这些主要分组之间的接口；
+
+5. 为技术决策提供规则，平衡各类涉众的不同关注点，化解技术风险，并保证相关决定被有效的传达和贯彻。
+
+
+1. 参与产品需求评审，制定技术方案，编写开发任务计划文档。
+2. 负责Android应用框架设置，编写核心UI和公共API组件，划分功能模块带领团队完成项目。
+3. 负责项目中重难点功能的开发，解决团队中开发中遇到的问题。
+4. 负责新技术研究、业务逻辑的重构，封装通用的组件
+5. 跟产品经理沟通客户提出的需求，根据产品需求制定开发任务。
+
+
+
+1. 参与公司移动产品原型的规划和设置并分析可实现方案的技术予以讨论。
+2. 负责项目架构的设计，与同事一起对划分的各模块进行时间规划安排。
+3. 负责主要功能模块的实现，以及管理项目开发进度。
+4. 负责多机型的适配和功能优化，解决用户反馈的Bug。
+5  负责开发中产品设计文档和模块开发文档的编写和整理。
+
+
+
+自我评价：
+1. 责任心强，及时沟通需求，制定项目规划，按时保质完成
+2. 善于学习，有很强的归纳总结能力，乐于造轮子
+3. 善于解决问题，遇到问题会全情投，会深入探究问题的结症，拿出最佳的解决方案
+
+
+深圳市汇星数字技术有限公司	2017.12-2022.04
+深圳市奇景信息技术有限公司	2016.07-2017.11
+
+
+=================================================================================================================================
+一、java四大特性
+ 1. 封装把一类事务封装为一个类， 实体类（Bean类，File、）、工具类（Utils、Loger）、组件(Activity、LoginManager)
+ 2. 继承/抽象/多态
+    a. 继承 子类继承父类的属性和行为，并能根据自己的需求扩展出新的属性和行为，提高了代码的可复用性。
+	b. 抽象 根据事务特性，抽出一些属性和行为，子类根据业务需求实现具体的行为
+	c. 多态 父类引用指向子类对象，调用子类实现的可扩充性方法或者接口接口，3个必要条件（父类引用指向子类对象、重写、继承）
+	
+============================================================================================================================
+	
+Android应用开发 框架搭建：
+
+ 1. 根据APP页面功能划分模块， Live模块（直播、节目列表、回看）、Vod模块（推荐、分组、详情、播放）、User模块（登录、设置）
+ 
+ 2. 采用模块化开发：引入BaseModule模块，包含baseView(fragment/activity/adapter/loadingView) baseUtils（log/appUtils/sharePreferences）
+    viewModel框架（rxjava/lifecycle/SimpleObserver）可以给所有的项目作为基础模块
+
+ 3. 创建CommonModule模块 添加BaseModule依赖、并导入需要的组件（如okhttp、ijkplayer等等一些三方组件和一些自己写的登录、日志处理等组件），
+    用于创建bean类，公共API/资源（网络请求、收藏管理、CommonApplication、Constants），路由跳转（router，）。
+
+ 4. 创建之前我们划分的  LiveModule、VodModule、UserModule模块 添加CommonModule依赖，在各自模块进行页面功能开发
+ 
+ 5. 在将app模块 添加LiveModule、VodModule、UserModule依赖，在app模块完成启动功能和主视图Navigation导航页面开发、监听处理全局状态（网络、登录）
+
+		|-Live --|
+ app -	|-Vod  --| - CommonModule --BaseModule
+		|-User --|
+ 
+版本管理： 前期使用的svn  最近两年git 
+master  develop(主体)  module(模块分支)  topic(需求、组件) bugg(问题) hotfix(紧急修复)
+合并分支：
+git checkout master
+git merge hotfix
+git commit
+变基分支
+git checkout develop
+git rebase master
+//如有冲突： git status查看那些因包含合并冲突而处于未合并（unmerged）状态的文件，修改后使用git commit 来完成合并提交
+
+client
+origin  clone、fetch 从远程仓库中抓取与拉取未合并、 pull自动尝试合并到当前所在的分支 、push只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，才能生效
+ 
+=============================================================================================================================================
+ 
+MVP、MVVM模式
+
+MVP的演变
+MVC的View层和Model层本身就是分离的，Controller层主要是简化View层的逻辑代码。很多时候Controller就是写在Activity内的
+导致跟View层重叠在了一起，所有我们在请求数据的时候直接在View层调用Model来使用，并没有使View和Model做到分离。
+
+MVP的Presenter层和Model层都是为了拆分View层而存在的。并且明确的规定了： view提供视图处理接口 调用Presenter业务请求接口，Presenter调用Model
+请求数据，并将返回的数据进行逻辑处理，最后调用View层的方法来更新界面
+IView 接口 视图处理   
+IPresenter 接口  业务请求
+View和Presenter会相互持有对方的应用，View销毁后，如果Presenter不能及时释放，会导致View内存泄露
+
+
+MVVM模式
+
+Model 提供基础数据操作功能模块
+View  视图，可以是activity、fragment或者是自定义View
+ViewModel 是负责跟View交互的模型，并且能调用Model层进行数据请求操作
+
+MVVM模式的设计思想-核心
+View跟ViewModel交互的核心要义：
+首先在ViewModel层创建可观察者LiveData，View订阅需要的观察事件，
+然后View在需要的安卓事件中调用ViewModel发起请求，ViewModel调用Model层进行数据请求操作，并将返回的数据进行逻辑处理，通知数据更新。
+View在受到观察的事件更新后更新UI视图
+
+什么 LiveData 和 DataBinding 实现的功能 核心就是这个
+
+LiveData： 就是一个可观察者, 可以提供给View订阅
+
+DataBinding：核心功能就两个：
+1. 订阅ViewModel层的可观察数据 LiveData，并绑定到需要的View上
+2. 在需要的安卓事件中调用ViewModel发起请求
+
+--------------------------------------------------------------------------------------------------------------------------
+除了一个好的设计模式，View的划分也很重要：
+比如说一个直播的activity 就划为一个View， 那必然导致activity的异常庞杂，代码量巨大，
+就行需要对View进行分解，按照业务功能 尽量分解成独立的Fragment模块，比如：播放Fragment、节目菜单Fragment、EpgFragment等
+还可以把一些相关的事务功能实现在自定义View中，比如：LivePlayerView中实现自动切换线路，提示播放错误等
+
+==============================================================================================================================
+
+
+Android触摸、按键事件传递机制
+
+首先通过Activity dispachEvent方法，下发到Activity的Window上，
+然后Windows调用顶层的ViewGorp 的 dispachEvent方法进行分发，
+新调用自身onInterept方法 判断是否拦截，如果 不拦截，则调用子View的dispachEvent
+当分发到最后一个子View时，会调用它的 OnTouchEvent方法处理事件，如果处理结果返回True，则事件完成消费。 如果子View不处理，返回 False，
+则事件会返回给父View的dispachEvent方法继续执行调用自己的OnTouchEvent方法处理事件，如果不处理 返回False，
+以此类推继续返回的父View处理，如果顶层的DockView也不处理，最后事件返回给Activity的OnTouchEvent来处理。
+
+
+Android TV 焦点原理
+
+Android焦点事件的分发是从ViewRootImpl的processKeyEvent开始的，
+首先有调用顶层DackView的dispatchKeyEvent事件分发，然后一层层的调用子View的dispatchKeyEvent进行处理
+最后的子View就是当前获取焦点的View。
+如果dispatchKeyEvent方法返回true代表焦点事件被消费了，所以所有的焦点跳转都可以通过消费按键事件来处理，
+在dispatchKeyEvent或者onKeyEvent方法中，将需要获取焦点的View请求焦点，然后返回True表示该事件已经消费了。
+
+否则会根据Android默认的焦点机制来处理，
+
+首先根据键，获取方向值
+然后调用DecorView的findFocus()方法一层一层往下查找当前获取焦点的子View
+然后调用该焦点View的focusSearch方法，传入方向值，
+找到该方向下一个将要获取焦点的view，最后如果该view不为空，那么就会调用该view的requestFouces方法获取焦点。
+
+所以焦点跳转的核心就是 focusSearch焦点查找方法，
+focusSearch默认是一层一层地往上调用父View的focusSearch方法
+直到在顶层的DecorView中，调用FocusFinder工具类的findNextFocus方法来查找下一个焦点View,
+
+
+首先会在焦点View 的nextFoces熟悉中查找，如果没有设置，
+而按照就近原则 查找指定方向上最靠近的可以获取焦点的View。
+
+
+可以看出focusSearch其实是一层一层地网上调用父View的focusSearch方法，直到当前view是根布局（isRootNamespace()方法），
+通过注释可以知道focusSearch最终会调用DecorView的focusSearch方法。而DecorView的focusSearch方法找到的焦点view是通过FocusFinder来找到的。
+
+===========================================================================================================
+
+
+OkHttp分析
+
+
+OkHttpClient->Builder 创建OkHttpClient
+
+
+Request->Builder 创建 Request
+
+
+OkHttpClient.newCall(Request)
+生成Call=RealCall->execute();
+得到Response
+
+
+RealCall->execute():
+  =>getResponseWithInterceptorChain
+	
+-client.interceptors()
+
+-retryAndFollowUpInterceptor
+-BridgeInterceptor
+-CacheInterceptor
+-ConnectInterceptor
+
+-!forWebSocket->client.networkInterceptors()
+
+-CallServerInterceptor
+==============================================================================================================
+
+程序开发中有许多设计模式可供选择，以下是一些常见的设计模式：
+
+单例模式（Singleton Pattern）：确保类只有一个实例，并提供一个全局访问点。
+
+工厂模式（Factory Pattern）：定义一个用于创建对象的接口，但是让子类决定实例化哪个类。
+
+建造者模式（Builder Pattern）：将一个复杂对象的构建过程与其表示相分离，使得同样的构建过程可以创建不同的表示。
+
+装饰器模式（Decorator Pattern）：动态地将责任附加到对象上，提供了一种灵活的替代继承的方式。
+
+适配器模式（Adapter Pattern）：将一个类的接口转换为客户端所期望的另一个接口，从而使得原本不兼容的类可以一起工作。
+
+迭代器模式（Iterator Pattern）：提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露该对象的内部表示。
+
+观察者模式（Observer Pattern）：定义对象间的一对多依赖关系，这样当一个对象状态改变时，它的所有依赖者都会收到通知并自动更新。
+
+策略模式（Strategy Pattern）：定义一系列的算法，将每一个算法封装起来，并且使它们可以相互替换。
+
+模板方法模式（Template Method Pattern）：定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重新定义该算法的某些特定步骤。
+
+命令模式（Command Pattern）：将请求封装成一个对象，从而使得可以用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作。
+
+责任链模式（Chain of Responsibility Pattern）：为解除请求的发送者和接受者之间的耦合，而使多个对象都有机会处理这个请求，将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
+
+=========================================================================================================
+线程通信：
+
+wait --- notify
+
+1. CountDownLatch(count) 主要作用是允许一个或多个线程等待另外的一组线程完成它们的操作
+用法：一个主线程：latch.await  等待 一组操作的线程完成操作后：latch.countDown 当计数器值减少到0时，所有等待的线程将被唤醒继续执行。
+
+2. CyclicBarrier的主要作用是让一组线程等待，直到所有线程都完成它们的操作，然后需要进行汇总操作，等汇总操作进行完，屏障消除，所有线程继续执行。
+用法：CyclicBarrier.new(count, 汇总操作) 一组操作线程 循环[ 操作……  barrier.await]
+
+
+
+线程安全：同步锁
+synchronized 同步的  关键字 加在方法上  和 加在对象上 有什么不同
+asynchronous 异步的
+
+Lock 类  
+synchronized是Java语言的关键字。Lock是一个类。
+synchronized不需要用户去手动释放锁，发生异常或者线程结束时自动释放锁;Lock则必须要用户去手动释放锁，如果没有主动释放锁，就有可能导致出现死锁现象。
+lock可以配置公平策略,实现线程按照先后顺序获取锁。
+提供了trylock方法 可以试图获取锁，获取到或获取超时/不到时，返回不同的返回值 让程序可以灵活处理。
+lock()和unlock()可以在不同的方法中执行,可以实现同一个线程在上一个方法中lock()在后续的其他方法中unlock(),比syncronized灵活的多。
+
+
+ReentrantLock
+重入锁也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。避免死锁问题的,synchronized也可重入。
+NonReentrantLock  不可重入锁
+
+ReentrantReadWriteLock  读写锁，可以分别获取读锁或写锁。
+读锁使用共享模式；写锁使用独占模式；读锁可以在没有写锁的时候被多个线程同时持有，写锁是独占的。当有读锁时，写锁就不能获得；而当有写锁时，除了获得写锁的这个线程可以获得读锁外，其他线程不能获得读锁
+
+公平锁与非公平锁
+公平锁：就是很公平，在并发环境中，每个线程在获取锁时会先查看此锁维护的等待队列，如果为空，或者当前线程线程是等待队列的第一个，就占有锁，否则就会加入到等待队列中，以后会按照FIFO的规则从队列中取到自己
+非公平锁：比较粗鲁，上来就直接尝试占有锁，如果尝试失败，就再采用类似公平锁那种方式
+
+
+原子性：
+关键字：volatile
+原子性操作：AtomicInteger->U.compareAndSwapInt  AtomicReference->U.compareAndSwapObject
+
+-------------------------------------------------------------------------------------------------------
+
+=========================================================================================================
+屏幕适配
+
+
+=========================================================================================================
+Android系统进程间通信
+
+Binder / AIDL  / Message  / Socket
+
+Binder有点类似于TCP通讯中的路由器,也是C/S架构. Binder是Android某个架构师开发的
+Socket是Linux原有的通讯方式,Android也可以使用
+Binder的接收方使用了mmap映射到了内核内存空间,不需要数据拷贝,发送方需要数据拷贝到内核空间.总共需要一次
+Aidl和Messager都是基于Binder
+
+AIDL-----------------------------------------------------------------------------------------------------
+
+aidl文件: InterfaceAidl.aidl  
+import com.iptv.aovivo.aovod.CallbackListener;
+interface InterfaceAidl {
+    String getSchoolName();
+    void registerListener(CallbackListener listener);
+    void unregisterListener(CallbackListener listener);
+}
+aidl文件:CallbackListener.aidl
+interface CallbackListener {
+    void onServiceConnected();
+    void sendMsgToClient(String msg);
+}
+编译器会自动生成 InterfaceAidl.java文件，和静态内部类Stub：public static abstract class Stub extends android.os.Binder implements nterfaceAidl
+
+Service： 
+在onBind(Intent intent)
+1. 从intent中获取验证信息，校验合法性： 
+2. return new AidlInterface.Stub(){
+	//InterfaceAidl接口具体实现
+}
+
+Activity: 
+1.在onCreate中bindService
+bindService(intent, (mConnection=new ServiceConnection(){
+	public void onServiceConnected(ComponentName name, IBinder service){
+		isConnection = true;
+		interfaceAidl = InterfaceAidl.Stub.asInterface(service);
+		interfaceAidl.registerListener(lisener = new CallbackListener.Default(){//CallbackListener接口具体实现});
+	}
+	public void onServiceDisconnected(ComponentName name) {
+        isConnection = false;
+    }
+}) ,Context.BIND_AUTO_CREATE);
+
+2.在onDestroy中unbindService
+if(isConnection && bindService.asBinder().isBinderAlive()){
+   bindService.unregisterListener(lisener);
+}
+unbindService(mConnection);
+
+3.linkToDeath和unlinkToDeath
+通过linkToDeath可以给binder设置一个死亡代理，当binder死亡时，就会收到通知，可以重新发起连接请求从而恢复，具体用法如下：
+public void onServiceConnected(ComponentName name, IBinder service) {
+	aidl = InterfaceAidl.Stub.asInterface(service);
+	try {
+		service.linkToDeath(new IBinder.DeathRecipient() {
+			@Override
+			public void binderDied() {
+				aidl.asBinder().unlinkToDeath(this, 0);
+				aidl = null;
+				//重新绑定service
+				bindService(intent, this , Context.BIND_AUTO_CREATE);
+			}
+		}, 0);
+	} catch (RemoteException e) {
+		e.printStackTrace();
+	}
+}
+
+
+aidl生成代码分析：
+1. asInterface方法的作用是用于将服务端的binder对象转化成客户端所需的AIDL接口类型的对象，并且可以看到，
+如果客户端和服务端在一个进程，那么直接返回服务端的Stub对象本身，否则返回封装后的Stub.Proxy代理对象；o
+nTransact方法的作用是根据客户端的code来判断客户端请求的目标方法是什么，然后根据Parcel(包裹)中的序列化数据，
+data存储了装载数据，接着从data中取出目标方法所需的参数，然后执行目标方法，之后把函数返回值写入到reply中。
+
+2.内部类Proxy，它实现了SchoolControllerAIDL接口，它运行在客户端，它也有一个asBinder方法，用来返回远程binder对象，用来进行远程调用，
+客户端调用服务端的方法的时候，以getSchoolName为例，首先创建输入型Parcel对象_data，输出型Parcel对象_reply，以及返回值_result，
+然后把参数信息写入到_data中，就是通过它的transact方法来执行远程操作的，transact内部调用了onTransact方法，
+注意，当调用transact的时候，当前线程会挂起，然后调用服务端的onTransact方法，直到onTransact执行结束返回后，
+当前线程继续执行，从_reply中取出执行结果，赋值给result并返回。
+
+Message--------------------------------------------------------------------------------------------------
+
+Messenger同样是android提供的一种IPC通信方式，它是通过在进程间传递Message对象，通过Message的setData方法，传递Bundle对象，
+Bundle传递的数据必须实现Parcelable接口，Messener是串行工作的，不存在并发问题.
+Messenger的底层实现就是AIDL，通过它的构造方法就会发现其中的端倪：
+public Messenger(IBinder target) {
+	mTarget = IMessenger.Stub.asInterface(target);
+}
+
+MessengerService实现：
+private Messenger mServiceMessenger = new Messenger(new Handler(){
+	public void handleMessage(Message msgFromClient) {
+		Log.d("wangkeke", "服务器接收到客户端的消息："+msgFromClient.what+ msgFromClient.getData().getString("client_msg"));
+		Message msgFromService = Message.obtain(null,MSG_FROM_SERVICE);
+		msgFromService.setData(bundle);
+		msgFromClient.replyTo.send(msgFromService);
+	};
+});
+
+public IBinder onBind(Intent intent) {
+	//将IBinder传给客户端，客户端通过new Messenger(IBinder)拿到mServiceMessenger;
+	return mServiceMessenger.getBinder();
+}
+
+Activity实现：
+private Messenger mClientMessenger = new Messenger(new Handler(){
+	public void handleMessage(Message msgFromService) {
+		Log.d("wangkeke", "客户端接收到服务器的消息："+msgFromService.what + msgFromService.getData().getString("service_msg"));
+	};
+}
+
+public void onServiceConnected(ComponentName name, IBinder iBinder) {
+	mServiceMessenger = new Messenger(iBinder);
+	Message msgFromClient = Message.obtain(null, MSG_FROM_CLIENT);
+	msgFromClient.setData(bundle));
+	msgFromClient.replyTo = mClientMessenger;
+	mServiceMessenger.send(msgFromClient);
+}
+
+=========================================================================================================
+andrroid 的动画类型
+    1.帧动画  Frame  一帧一帧的    其中包含：translate和rotate
+    2.补间动画    Tween  慢慢过渡，设置初值和末值，并用插值器来控制过渡  其中包含：alpha和scale
+    3.属性动画    ObjectAnimation ValueAnimation   控制属性来实现动画。
+属性动画是3.0以后加入的动画。三种动画各有各的好处和缺点
+    特点：
+        1.帧动画 由于是一帧一帧的，所以需要图片多。会增大apk的大小，但是这种动画可以实现一些比较难的效果
+比如说等待的环形进度。。多用这个做。
+        2.补间动画  可以设置差值器和初末值来控制。相对也比较简单，页面切换的动画多用这个来做。缺点，视觉上
+上变化，并不是真正的位置上的变化。
+        3.属性动画  最为强大的动画，弥补了补间动画的缺点，实现位置+视觉的变化。并且可以自定义插值器，实现各种
+想要的效果。典型案例-----》卫星菜单。
+
+========================================================================================================
+ANR：系统可能会弹出ANR对话框
+在Android上，如果你的应用程序有一段时间响应不够灵敏，系统会向用户显示一个对话框，这个对话框称作应用程序无响应（ANR：Application Not Responding）对话框。用户可以选择“等待”而让程序继续运行，也可以选择“强制关闭”。
+默认情况下，在android中Activity的最长执行时间是5秒，BroadcastReceiver的最长执行时间则是10秒。超出就会提示应用程序无响应（ANR：Application Not Responding）对话框。
+三种常见类型
+1： KeyDispatchTimeout(5 seconds) -- 主要类型 按键或触摸事件在特定时间内无响应
+
+2： BroadcastTimeout(10 seconds) BroadcastReceiver在特定时间内无法处理完成
+
+3： ServiceTimeout(20 seconds) -- 小概率类型 Service在特定的时间内无法处理完成
+
+系统会产生traces.txt文件，目录为/data/anr
+由于该文件的产生是在DVM中的，所以只有运行DVM实例的进程才能产生该文件，也就是说只有Java代码才能产生该文件，
+App应用的Native层（如Android Library、用c/c++编译的库）即使异常也不会产生ANR日志文件
+
+---------------------------------------------------------------------------------------------------------
+前台进程
+用户当前操作所必需的进程。如果一个进程满足以下任一条件，即视为前台进程：
+
+托管用户正在交互的 Activity（已调用 Activity 的 onResume() 方法）
+托管某个 Service，后者绑定到用户正在交互的 Activity
+托管正在“前台”运行的 Service（服务已调用 startForeground()）
+托管正执行一个生命周期回调的 Service（onCreate()、onStart() 或 onDestroy()）
+托管正执行其 onReceive() 方法的 BroadcastReceiver
+通常，在任意给定时间前台进程都为数不多。只有在内存不足以支持它们同时继续运行这一万不得已的情况下，系统才会终止它们。 此时，设备往往已达到内存分页状态，因此需要终止一些前台进程来确保用户界面正常响应。
+
+可见进程
+没有任何前台组件、但仍会影响用户在屏幕上所见内容的进程。 如果一个进程满足以下任一条件，即视为可见进程：
+
+托管不在前台、但仍对用户可见的 Activity（已调用其 onPause() 方法）。例如，如果前台 Activity 启动了一个对话框，允许在其后显示上一 Activity，则有可能会发生这种情况。
+托管绑定到可见（或前台）Activity 的 Service。
+可见进程被视为是极其重要的进程，除非为了维持所有前台进程同时运行而必须终止，否则系统不会终止这些进程。
+
+服务进程
+正在运行已使用 startService() 方法启动的服务且不属于上述两个更高类别进程的进程。尽管服务进程与用户所见内容没有直接关联，但是它们通常在执行一些用户关心的操作（例如，在后台播放音乐或从网络下载数据）。因此，除非内存不足以维持所有前台进程和可见进程同时运行，否则系统会让服务进程保持运行状态。
+
+后台进程
+包含目前对用户不可见的 Activity 的进程（已调用 Activity 的 onStop() 方法）。这些进程对用户体验没有直接影响，系统可能随时终止它们，以回收内存供前台进程、可见进程或服务进程使用。 通常会有很多后台进程在运行，因此它们会保存在 LRU （最近最少使用）列表中，以确保包含用户最近查看的 Activity 的进程最后一个被终止。如果某个 Activity 正确实现了生命周期方法，并保存了其当前状态，则终止其进程不会对用户体验产生明显影响，因为当用户导航回该 Activity 时，Activity 会恢复其所有可见状态。 有关保存和恢复状态的信息，请参阅 Activity文档。
+
+空进程
+不含任何活动应用组件的进程。保留这种进程的的唯一目的是用作缓存，以缩短下次在其中运行组件所需的启动时间。 为使总体系统资源在进程缓存和底层内核缓存之间保持平衡，系统往往会终止这些进程。
+
+--------------------------------------------------------------------------------------------------------
+GC 内存回收
+
+可达性分析算法 ：算法的思想就是通过一系列的成为"GC Roots"的对象来作为起始点,从这些节点开始向下搜索,搜索所走过的路径成为引用链,当一个对象到"GC Roots"没有任何引用链相连,则证明此对象是不可用的. 
+在Java中,可以作为GC Roots的对象包括下面几种:
+1.虚拟机栈中引用的对象  ThreadLocal<T> -> Thread.ThreadLocalMap->get(ThreadLocal)->Entry(ThreadLocal,Value)->entry.Value
+  ThreadLocal使用场景：GL线程处理、jni获取Evn对象。
+2.方法区中类静态属性引用的对象
+3.方法区中常量引用的对象
+4.本地方法栈中JNI(即一般说的Native方法)的引用的对象
+
+在JDK1.2之后对引用进行重新的扩充,分为强引用,软引用,弱引用,虚引用4种,这四种引用的强度依次递减
+强引用 是在代码中普通存在的,类似于Object obj=new Object();只要强引用一直在,垃圾收集器就永远不会回收被引用的对象.
+软引用 用来描述一些还有用单并非必须的对象,对于软引用关联着对象,当内存溢出异常发生之前,通过垃圾回收进行二次回收,如果二次回收完成之后,系统内存依然不够,才会抛出内存溢出异常,在jdk1.2以后用SoftReference类来实现软引用.
+弱引用 也是用来描述非必须对象的,但是它的强度相比于软引用来说更弱一点,它仅仅能生存到下一次垃圾回收之前,当垃圾收集时,无论内存是否走狗,弱引用对象都要被回收,在jdk1.2以后用WeakReference类来实现弱引用
+虚引用 是最弱的一种引用关系,一个对象是否有虚引用的存在,完全不会对其生存时间构成影响,也无法通过一个虚引用来获取一个实例对象,为一个对象设置弱引用的唯一目的就是该对象在垃圾回收时受到一个系统通知,在jdk1.2以后用PhantomReference实现虚引用
+
+可达性分析算法:
+算法的思想就是通过一系列的成为"GC Roots"的对象来作为起始点,从这些节点开始向下搜索,搜索所走过的路径成为引用链,当一个对象到"GC Roots"没有任何引用链相连,则证明此对象是不可用的. 
+
+分代收集算法: java堆分为新生代和老年代,这样就可以根据各个代的对象特点选用最适当的回收算法,
+在新生代,每次垃圾回收都有大量的对象死去,只有少量存活,这样就是适合采用复制算法,只需要 付出少量的对象复制成本 就可以完成垃圾回收,
+而老年代因为存活率高,没有其他内存进行分配担保,就必须使用标记-整理进行回收
+
+
+===========================================================================================================
+广播说法
+1.动态注册的广播永远要快于静态注册的广播,不管静态注册的优先级设置的多高,不管动态注册的优先级有多低。
+2.动态注册广播不是常驻型广播，也就是说广播跟随activity的生命周期。注意: 在activity结束前，移除广播接收器。
+3.在同一个优先级下,谁先启动的快,谁将先接收到广播。
+
+
+============================================================================================================
+WebView中描述
+1.在WebView中下载文件需要设置setDownloadListener
+2.通过同步Cookie的方式可以使WebView保持登录状态
+3.在访问https网页时收到onReceivedSslError回调可以使用handler.proceed()忽略错误
+
+
+======================================================================================================
+移动端hook框架
+xposed / Substrate / Cydia / frida
+
+======================================================================================================
+
+数据结构：
+
+数组、字符串、链表、栈、队列  || 树、图、堆
+
+数组：int[] Vecter ArrayList
+链表: LinkList
+栈:   Stack
+队列: ArrayDeque(循环队列，删除元素头指针(front+1)  插入元素尾指针(rear+1)) 
+树：TreeSet=>TreeMap(红黑树) HashSet=>HashMap（数组+[链表|红黑树]） （线程安全ConcurrentHashMap|HashTable）
+
+堆：PriorityQueue(优先队列)最大堆（父结点大于子结点的满二叉树）、 最小堆（父结点小于子结点的满二叉树）
+
+--------------------------------------------------------------------
+将数组中指定的前N位移动到数组的最后面：
+方法一：就是另外申请一个数组，然后把要移动的元素进行一次拷贝，
+        之后将原数组剩下的元素进行前移，在把拷贝的元素放在数组的最后面
+方法二：对数组相应段落的元素进行求逆序运算
+AB = (1,2,3)(4,5,6,7)
+A^B^)^ = BA = (4,5,6,7)(1,2,3)
+
+--------------------------------------------字符串--------------------------------------------------------------------
+1. String的值是不可变的，这就导致每次对String的操作都会生成新的String对象，不仅效率低下，而且大量浪费有限的内存空间。
+2. StringBuffer是可变类，和线程安全的字符串操作类，任何对它指向的字符串的操作都不会产生新的对象。 
+每个StringBuffer对象都有一定的缓冲区容量，当字符串大小没有超过容量时，不会分配新的容量，当字符串大小超过容量时，会自动增加容量。
+3. StringBuilder和StringBuffer类功能基本相似，主要区别在于StringBuffer类的方法是多线程、安全的，而StringBuilder不是线程安全的，
+相比而言，StringBuilder类会略微快一点。对于经常要改变值的字符串应该使用StringBuffer和StringBuilder类。
+StringBuilder和StringBuffer 本质是封装了一个char数组，当需要的长度不够时，会先新建 Min(length * 2, Integer.Max)的长度扩容，然后拷贝原有数据，最后拷贝需要添加的数据。
+4.线程安全 StringBuffer 线程安全 StringBuilder 线程不安全
+5.速度 一般情况下,速度从快到慢:StringBuilder>StringBuffer>String,这种比较是相对的，不是绝对的。
+6.总结
+（1）.如果要操作少量的数据用 = String
+（2）.单线程操作字符串缓冲区 下操作大量数据 = StringBuilder
+（3）.多线程操作字符串缓冲区 下操作大量数据 = StringBuffer
+
+
+String类型的常量池比较特殊。它的主要使用方法有两种：
+直接使用双引号声明出来的String对象会直接存储在常量池中。
+如果不是用双引号声明的String对象，可以使用String提供的intern方法。intern 方法会从字符串常量池中查询当前字符串是否存在，若不存在就会将当前字符串放入常量池中
+String s = new String("abc");
+创建了2个对象，第一个对象是”abc”字符串存储在常量池中，第二个对象在JAVA Heap中的 String 对象。
+public static void main(String[] args) {
+    String s = new String("1");
+    s.intern();
+    String s2 = "1";
+    System.out.println(s == s2);
+ 
+    String s3 = new String("1") + new String("1");
+    s3.intern();
+    String s4 = "11";
+    System.out.println(s3 == s4);
+}
+打印结果是:
+jdk6 下false false   Jdk6 字符串的常量池是放在堆的 Perm 区的，Perm 区是一个类静态的区域，主要存储一些加载类的信息，常量池，方法片段等内容，默认大小只有4m
+jdk7 下false true    jdk7 字符串常量池移动到 JAVA Heap（堆） 区域
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+基础算法：
+哈希、查找、排序、递归、复杂度
+
+排序: 直接插入排序（N<7） 折半插入排序（N<32） 计数排序(byte_8/char_16/shor_16)  归并排序（Object） 快速排序（int/long）
+不稳定的排序有：快（快速排序）些（希尔排序）选（选择排序）堆（堆排序）
+
+哈希函数构造主要有：直接寻址法/取模法/平方取中法/除留余数法
+处理冲突主要方法有：开地址法/链地址法/建立一个公共溢出区再散列法
+
+
+---------------------------------------------------------------------
+堆排序初始建堆的时间复杂度，数据结构算法上写的时间复杂度是O(nlogn)，而在网络上搜索，大部分人说是O(n)，其实这是一个自顶向下建堆和自底向上建堆的问题
+
+自底向上建堆：O(n)
+从最后一个叶子结点的父节点开始，每个结点和他的子结点进行比较和交换，
+大的数提到父结点，小的数向下堆化到合适位置
+参考网址：https://blog.csdn.net/qq_52433890/article/details/121502538
+
+自顶向下建堆 O(nlogn)
+自顶向下建堆的情况可以参考堆排序初始建堆后面的步骤
+即从根节点开始，逐个比较替换，直到根节点走过的路径符合堆的定义，然后重复此步骤，比较结点的左右子树。
+---------------------------------------------------------------------
+
+LruCache
+
+最大缓存：mMaxSize500M   最大记录条数：mMaxCount1000条
+
+记录操作： w：写入——文件大小   r：读取  d：删除
+md5_key   w   18219
+md5_key   r
+md5_key   d
+
+
+用的是：LinkedHashMap  设置为Lru的指令模式
+key是 url的md5值，也是文件名
+Value   定义了一个实体类：version 、文件大小
+
+当前缓存大小：current_size    当前记录的条数：current_cout
+record_log  ==> LinkedHashMap ==> 新的record_log（只有 操作： w）
+
+每次在 writer之前： 判断  current_size< && current_cout<，则： 写入
+否则：while（current_size || current_cout） 
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+
+
